@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}
+Add Post
+{% endblock %}
+
+
+{% block content %}
+{% if user.is_authenticated %}
+
+<h3>Add Blog  Post </h3>
+ 
+{% if submit %}  
+    Post Saved Successfully!!!!
+    {% else %}
+    <div class="form-group">
+    <form method="POST" action="{% url 'add_post' %}">
+    <br><br>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button  type="submit" class="btn btn-secondary name="postbtn"> Post </button>
+    
+    </form>
+ {% endif %}
+ {% else %}
+<h3> You're not allowed here.</h3>
+{% endif %}
+</div> 
+
+{% endblock %}
